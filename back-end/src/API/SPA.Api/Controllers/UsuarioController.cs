@@ -23,10 +23,7 @@ public class UsuarioController(IUsuarioAppService _usuarioAppService) : Controll
     [HttpGet("{idUsuario}")]
     public async Task<IActionResult> BuscarPorIdAsync(string idUsuario)
     {
-        if (string.IsNullOrWhiteSpace(idUsuario))
-            return BadRequest("O ID do usuário não pode ser vazio.");
-
-        if (!Guid.TryParse(idUsuario, out var idGuid) || idGuid == Guid.Empty)
+        if (string.IsNullOrWhiteSpace(idUsuario) || !Guid.TryParse(idUsuario, out var idGuid) || idGuid == Guid.Empty)
             return BadRequest("O ID do usuário deve ser um GUID válido e não vazio.");
 
         var result = await _usuarioAppService.BuscarPorIdAsync(idGuid);

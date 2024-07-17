@@ -21,7 +21,7 @@ public class ClienteService(IClienteRepository _clienteRepository) : IClienteSer
 
     public async Task AtualizarAsync(Cliente cliente)
     {
-        await _clienteRepository.UpdateAsync(cliente);
+        _clienteRepository.Update(cliente);
         await _clienteRepository.SaveChangesAsync();
     }
 

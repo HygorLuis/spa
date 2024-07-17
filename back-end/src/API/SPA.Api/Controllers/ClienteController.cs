@@ -22,11 +22,8 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     [HttpGet("{idCliente}")]
     public async Task<IActionResult> BuscarPorIdAsync(string idCliente)
     {
-        if (string.IsNullOrWhiteSpace(idCliente))
-            return BadRequest("O ID do usuário não pode ser vazio.");
-
-        if (!Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
-            return BadRequest("O ID do usuário deve ser um GUID válido e não vazio.");
+        if (string.IsNullOrWhiteSpace(idCliente) || !Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
+            return BadRequest("O ID do cliente deve ser um GUID válido e não vazio.");
 
         var result = await _clienteAppService.BuscarPorIdAsync(idGuid);
         if (!result.Succeeded)
@@ -49,11 +46,8 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     [HttpPut("{idCliente}")]
     public async Task<IActionResult> AtualizarAsync(string idCliente, [FromBody] CreateUpdateClienteDto updateClienteDto)
     {
-        if (string.IsNullOrWhiteSpace(idCliente))
-            return BadRequest("O ID do usuário não pode ser vazio.");
-
-        if (!Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
-            return BadRequest("O ID do usuário deve ser um GUID válido e não vazio.");
+        if (string.IsNullOrWhiteSpace(idCliente) || !Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
+            return BadRequest("O ID do cliente deve ser um GUID válido e não vazio.");
 
         var result = await _clienteAppService.AtualizarAsync(idGuid, updateClienteDto);
         if (!result.Succeeded)
@@ -65,11 +59,8 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     [HttpDelete("{idCliente}")]
     public async Task<IActionResult> ExcluirAsync(string idCliente)
     {
-        if (string.IsNullOrWhiteSpace(idCliente))
-            return BadRequest("O ID do usuário não pode ser vazio.");
-
-        if (!Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
-            return BadRequest("O ID do usuário deve ser um GUID válido e não vazio.");
+        if (string.IsNullOrWhiteSpace(idCliente) || !Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
+            return BadRequest("O ID do cliente deve ser um GUID válido e não vazio.");
 
         var result = await _clienteAppService.ExcluirAsync(idGuid);
         if (!result.Succeeded)

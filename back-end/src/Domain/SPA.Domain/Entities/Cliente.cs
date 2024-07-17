@@ -1,7 +1,10 @@
-﻿namespace SPA.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SPA.Domain.Entities;
 
 public class Cliente
 {
+    [Key]
     public Guid Id { get; set; }
     public string Nome { get; set; }
     public string Email { get; set; }

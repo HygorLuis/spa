@@ -46,7 +46,7 @@ public class ClienteAppService(IMapper _mapper, IClienteService _clienteService)
         {
             var cliente = _clienteService.BuscarPorCPF(createClienteDto.CPF);
             if (cliente != null)
-                return ServiceResult<ReadClienteDto>.Failure($"Cliente já cadastrada como \"{cliente.Nome}\"!");
+                return ServiceResult<ReadClienteDto>.Failure($"Cliente já cadastrado como \"{cliente.Nome}\"!");
 
             cliente = _mapper.Map<Cliente>(createClienteDto);
             var clienteCadastrado = await _clienteService.CadastrarAsync(cliente);
