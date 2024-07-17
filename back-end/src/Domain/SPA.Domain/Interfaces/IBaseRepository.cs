@@ -7,4 +7,5 @@ public interface IBaseRepository<T> where T : class
     Task AddAsync(T entity);
     Task UpdateAsync(T entity);
     void Delete(T entity);
+    Task SaveChangesAsync();
 }
