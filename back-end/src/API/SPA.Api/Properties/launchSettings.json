@@ -17,10 +17,10 @@
       "applicationUrl": "http://localhost:5156",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTIONSTRING": "Server=localhost;Port=5432;Database=SPA;Username=postgres;Password=postgres"
-        //"JWT-SECRET": "fedaf7d8863b48e197b9287d492b708e",
-        //"JWT-ISSUER": "https://localhost:7265",
-        //"JWT-AUDIENCE": "LOCALHOST"
+        "CONNECTIONSTRING": "Server=localhost;Port=5432;Database=SPA;Username=postgres;Password=postgres",
+        "JWT-SECRET": "fedaf7d8863b48e197b9287d492b708e",
+        "JWT-ISSUER": "https://localhost:5156",
+        "JWT-AUDIENCE": "LOCALHOST"
       }
     },
     "https": {
@@ -32,9 +32,9 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "CONNECTIONSTRING": "Server=localhost;Port=5432;Database=SPA;Username=postgres;Password=postgres",
-        //"JWT-SECRET": "fedaf7d8863b48e197b9287d492b708e",
-        //"JWT-ISSUER": "https://localhost:7265",
-        //"JWT-AUDIENCE": "LOCALHOST"
+        "JWT-SECRET": "fedaf7d8863b48e197b9287d492b708e",
+        "JWT-ISSUER": "https://localhost:7048",
+        "JWT-AUDIENCE": "LOCALHOST"
       }
     },
     "IIS Express": {

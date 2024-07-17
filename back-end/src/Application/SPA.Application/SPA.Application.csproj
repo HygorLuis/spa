@@ -9,10 +9,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Serilog" Version="4.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\SPA.Domain\SPA.Domain.csproj" />
+    <ProjectReference Include="..\..\Infra\CrossCutting\SPA.CrossCutting\SPA.CrossCutting.csproj" />
     <ProjectReference Include="..\..\Infra\Data\SPA.Data\SPA.Data.csproj" />
   </ItemGroup>
 

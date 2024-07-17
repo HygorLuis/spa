@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SPA.Application.Dtos;
 using SPA.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace SPA.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 
 public class ProdutoController(IProdutoAppService _produtoAppService) : ControllerBase
 {

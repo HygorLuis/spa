@@ -1,13 +1,17 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using SPA.Application.Interfaces;
 using SPA.Application.Services;
+using SPA.CrossCutting;
 using SPA.Data.Context;
 using SPA.Data.Repositories;
 using SPA.Domain.Entities;
 using SPA.Domain.Interfaces;
 using SPA.Domain.Services;
+using System.Text;
 
 const string corsPolicyName = "AllowAllOrigins";
 
@@ -47,6 +51,22 @@ builder.Services.AddIdentity<Usuario, IdentityRole<Guid>>(opts =>
     opts.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<PostgresDbContext>().AddDefaultTokenProviders();
 
+builder.Services.AddOptions().AddAuthentication(opts =>
+{
+    opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(opts =>
+{
+    opts.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(EnvironmentVars.JwtSecret)),
+        ValidIssuer = EnvironmentVars.JwtIssuer,
+        ValidAudience = EnvironmentVars.JwtAudience,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
 // CorsPolicy
 builder.Services.AddCors(opts =>
 {
@@ -66,6 +86,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IUsuarioAppService, UsuarioAppService>();
 builder.Services.AddScoped<IClienteAppService, ClienteAppService>();
 builder.Services.AddScoped<IProdutoAppService, ProdutoAppService>();
+builder.Services.AddScoped<IAuthAppService, AuthAppService>();
+builder.Services.AddScoped<IJwtAppService, JwtAppService>();
 
 // Services
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
@@ -90,6 +112,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors(corsPolicyName);
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
