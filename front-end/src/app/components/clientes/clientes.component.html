@@ -18,8 +18,8 @@
           @for (cliente of clientes; track cliente.id) {
             <tr [ngClass]="{'selecionado': clienteSelecionado.id === cliente.id}">
               <td>{{cliente.nome}}</td>
-              <td>{{cliente.cpf}}</td>
-              <td>{{cliente.telefone}}</td>
+              <td>{{formatarCpf(cliente.cpf)}}</td>
+              <td>{{formatarTelefone(cliente.telefone)}}</td>
               <td>{{cliente.email}}</td>
               <td>{{cliente.endereco}}</td>
               <td>
@@ -45,5 +45,5 @@
 </section>
 
 @if (cardCadastroAberto) {
-  <app-cadastro (cardAberto)="abrirCardCliente($event)" [clienteSelecionado]="clienteSelecionado"></app-cadastro>
+  <app-cadastro-cliente (cardAberto)="abrirCardCliente($event)" [clienteSelecionado]="clienteSelecionado"></app-cadastro-cliente>
 }

@@ -19,6 +19,20 @@ export class ClientesComponent implements OnInit{
     this.buscarClientes();
   }
 
+  formatarCpf(cpf: string): string {
+    return (!cpf)? '' : cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  }
+
+  formatarTelefone(telefone: string): string {
+    if (!telefone) return '';
+
+    if (telefone.length === 10) {
+      return telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    }
+
+    return telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  }
+
   buscarClientes(): void {
     this.service.buscar().subscribe((clientes) => {
       this.clientes = clientes;

@@ -11,6 +11,10 @@
   background: colors.$azul-claro;
   width: 100%;
 
+  .selecionado{
+    background: colors.$cinza;
+  }
+
   .item {
     padding: 1.7rem 1rem;
     transition: background-color properties.$tempo-transacao ease-out;

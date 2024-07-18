@@ -1,0 +1,39 @@
+.grid-form-produto {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2 auto);
+  grid-template-areas:
+    "nome estoque"
+    "custo venda"
+    "observacao observacao"
+    "botoes botoes";
+  gap: 2rem;
+
+  #nome-grupo {
+    grid-area: nome;
+  }
+
+  #estoque-grupo {
+    grid-area: estoque;
+  }
+
+  #custo-grupo {
+    grid-area: custo;
+  }
+
+  #venda-grupo {
+    grid-area: venda;
+  }
+
+  #observacao-grupo {
+    grid-area: observacao;
+  }
+
+  .botoes {
+    grid-area: botoes;
+
+    .botao-grande {
+      width: 150px;
+    }
+  }
+}

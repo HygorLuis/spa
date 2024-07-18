@@ -1,0 +1,49 @@
+<section class="container blur-transition" [ngClass]="{'blur': cardCadastroAberto}">
+  <button class="botao botao-grande" (click)="abrirCardProduto(true)">Incluir Produto</button>
+
+  @if (produtos.length > 0) {
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th><span>Nome</span></th>
+            <th><span>Estoque</span></th>
+            <th><span>Custo</span></th>
+            <th><span>Venda</span></th>
+            <th><span>Observação</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (produto of produtos; track produto.id) {
+            <tr [ngClass]="{'selecionado': produtoSelecionado.id === produto.id}">
+              <td>{{produto.nome}}</td>
+              <td>{{produto.quantidadeEstoque}}</td>
+              <td>{{produto.valorCusto | currency:'R$':'symbol':'1.2-2':'pt-BR'}}</td>
+              <td>{{produto.valorVenda | currency:'R$':'symbol':'1.2-2':'pt-BR'}}</td>
+              <td>{{produto.observacao}}</td>
+              <td>
+                <button title="Editar Produto" class="botao-img" (click)="abrirCardProduto(true, produto.id)">
+                  <img class="img-botao" src="../../../assets/edicao.png" />
+                </button>
+
+                <button title="Excluir Produto" class="botao-img" (click)="excluirProduto(produto.id)">
+                  <img src="../../../assets/lixeira.png" />
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @else {
+    <div class="informativo">
+      <p class="texto">Nenhum produto existente!</p>
+    </div>
+  }
+</section>
+
+@if (cardCadastroAberto) {
+  <app-cadastro-produto (cardAberto)="abrirCardProduto($event)" [produtoSelecionado]="produtoSelecionado"></app-cadastro-produto>
+}

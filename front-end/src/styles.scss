@@ -175,3 +175,8 @@ span.error {
     width: 15px;
   }
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}

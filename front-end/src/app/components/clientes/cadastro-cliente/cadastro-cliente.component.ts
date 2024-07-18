@@ -5,11 +5,12 @@ import { ClienteForm } from './cliente-form';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss'
+  selector: 'app-cadastro-cliente',
+  templateUrl: './cadastro-cliente.component.html',
+  styleUrl: './cadastro-cliente.component.scss'
 })
-export class CadastroComponent implements OnInit {
+
+export class CadastroClienteComponent implements OnInit {
   @Input() clienteSelecionado!: Cliente;
   @Output() cardAberto = new EventEmitter<boolean>();
 

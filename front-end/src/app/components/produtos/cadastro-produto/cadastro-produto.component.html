@@ -1,0 +1,47 @@
+<section class="container card container-fixed-center">
+  <h2 class="sub-titulo">{{produtoSelecionado.id == '' ? 'Incluir' : 'Alterar'}} Produto</h2>
+  <hr />
+  <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()" class="grid-form-produto">
+    <div id="nome-grupo" class="form-group">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" formControlName="nome"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && produtoForm.controls.nome.invalid || (produtoForm.get('nome')?.hasError('required') && produtoForm.get('nome')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="estoque-grupo" class="form-group">
+      <label for="estoque">Estoque</label>
+      <input id="estoque" type="text" formControlName="quantidadeEstoque" mask="separator.0"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && produtoForm.controls.quantidadeEstoque.invalid || (produtoForm.get('quantidadeEstoque')?.hasError('required') && produtoForm.get('quantidadeEstoque')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="custo-grupo" class="form-group">
+      <label for="custo">Custo</label>
+      <input id="custo" type="text" formControlName="valorCusto" prefix="R$ " mask="separator.2" thousandSeparator="."/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && produtoForm.controls.valorCusto.invalid || (produtoForm.get('valorCusto')?.hasError('required') && produtoForm.get('valorCusto')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="venda-grupo" class="form-group">
+      <label for="venda">Venda</label>
+      <input id="venda" type="text" formControlName="valorVenda" prefix="R$ " mask="separator.2" thousandSeparator="."/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && produtoForm.controls.valorVenda.invalid || (produtoForm.get('valorVenda')?.hasError('required') && produtoForm.get('valorVenda')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="observacao-grupo" class="form-group">
+      <label for="observacao">Observação</label>
+      <input id="observacao" type="text" formControlName="observacao"/>
+    </div>
+
+    <div class="botoes">
+      <button type="submit" class="botao botao-grande">Salvar</button>
+      <button type="reset" class="botao botao-grande" (click)="fechar()">Voltar</button>
+    </div>
+  </form>
+</section>
