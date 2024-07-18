@@ -1,0 +1,55 @@
+<section class="container card container-fixed-center">
+  <h2 class="sub-titulo">{{clienteSelecionado.id == '' ? 'Incluir' : 'Alterar'}} Cliente</h2>
+  <hr />
+  <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()" class="grid-form-cliente">
+    <div id="nome-grupo" class="form-group">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" formControlName="nome"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && clienteForm.controls.nome.invalid || (clienteForm.get('nome')?.hasError('required') && clienteForm.get('nome')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="cpf-grupo" class="form-group">
+      <label for="cpf">CPF</label>
+      <input id="cpf" type="text" formControlName="cpf" mask="000.000.000-00"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && clienteForm.controls.cpf.invalid || (clienteForm.get('cpf')?.hasError('required') && clienteForm.get('cpf')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="telefone-grupo" class="form-group">
+      <label for="telefone">Telefone</label>
+      <input id="telefone" type="text" formControlName="telefone" mask="(00) 00000-0000"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && clienteForm.controls.telefone.invalid || (clienteForm.get('telefone')?.hasError('required') && clienteForm.get('telefone')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="email-grupo" class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="text" formControlName="email"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && clienteForm.controls.email.invalid || (clienteForm.get('email')?.hasError('required') && clienteForm.get('email')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="endereco-grupo" class="form-group">
+      <label for="endereco">Endereço</label>
+      <input id="endereco" type="text" formControlName="endereco"/>
+      <div id="validacao-erro" [ngClass]="{'visible': submitted && clienteForm.controls.endereco.invalid || (clienteForm.get('endereco')?.hasError('required') && clienteForm.get('endereco')?.touched)}">
+        <p><span class="error">Campo obrigatório.</span></p>
+      </div>
+    </div>
+
+    <div id="observacao-grupo" class="form-group">
+      <label for="observacao">Observação</label>
+      <input id="observacao" type="text" formControlName="observacao"/>
+    </div>
+
+    <div class="botoes">
+      <button type="submit" class="botao botao-grande">Salvar</button>
+      <button type="reset" class="botao botao-grande" (click)="fechar()">Voltar</button>
+    </div>
+  </form>
+</section>

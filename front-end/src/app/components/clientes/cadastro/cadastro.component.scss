@@ -1,0 +1,44 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-form-cliente {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "nome cpf telefone"
+    "email endereco endereco"
+    "observacao observacao observacao"
+    "botoes botoes botoes";
+  gap: 2rem;
+
+  #nome-grupo {
+    grid-area: nome;
+  }
+
+  #cpf-grupo {
+    grid-area: cpf;
+  }
+
+  #telefone-grupo {
+    grid-area: telefone;
+  }
+
+  #email-grupo {
+    grid-area: email;
+  }
+
+  #endereco-grupo {
+    grid-area: endereco;
+  }
+
+  #observacao-grupo {
+    grid-area: observacao;
+  }
+
+  .botoes {
+    grid-area: botoes;
+  }
+}

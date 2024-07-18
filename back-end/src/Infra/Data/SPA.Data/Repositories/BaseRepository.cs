@@ -10,7 +10,7 @@ public class BaseRepository<T>(PostgresDbContext _postgresDbContext) : IBaseRepo
 
     public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
     public virtual async Task<T?> FindByIdAsync(Guid id) => await _dbSet.FindAsync(id);
-    public virtual async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
+    public virtual async Task AddAsync(T entity, string? value = null) => await _dbSet.AddAsync(entity);
     public virtual void Update(T entity) => _dbSet.Update(entity);
     public void Delete(T entity) => _dbSet.Remove(entity);
     public async Task SaveChangesAsync() => await _postgresDbContext.SaveChangesAsync();

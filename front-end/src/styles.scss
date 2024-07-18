@@ -1,0 +1,177 @@
+@use './app/base/colors';
+@use './app/base/properties';
+
+@import 'reset-css';
+
+a {
+  text-decoration: none;
+}
+
+input {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  outline: none;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+
+  .sub-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    gap: 20px;
+  }
+}
+
+.container-fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.card {
+  border: 1px solid colors.$cinza;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px colors.$cinza;
+  background: colors.$branco;
+}
+
+hr {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.botoes {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.botao {
+  padding: .7rem 2rem;
+  cursor: pointer;
+  border: 0px;
+  border-radius: 16px;
+  color: colors.$branco;
+  background: colors.$azul-claro;
+  transition: background-color properties.$tempo-transacao ease-out;
+
+  &:hover {
+    background: colors.$cinza;
+  }
+}
+
+.botao-grande {
+  font-size: 16px;
+  font-weight: 500;
+  width: 250px;
+}
+
+.blur {
+  filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.blur-transition {
+  transition: filter var(--tempo-efeito) ease;
+}
+
+.informativo {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 20em);
+
+  .texto {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.table-wrapper {
+  overflow-y: auto;
+  height: 50vh;
+  margin: 1rem;
+  border: 1px solid colors.$cinza;
+
+  table {
+    text-align: center;
+    min-width: max-content;
+  }
+
+  thead {
+    position: sticky;
+    top: 0px;
+    background: colors.$azul-claro;
+    color: colors.$branco;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  th {
+    padding: 0.9rem;
+  }
+
+  td {
+    padding: 0.9rem;
+  }
+
+  tbody {
+
+    tr.selecionado {
+      background: colors.$cinza-claro;
+    }
+
+    tr {
+      border-bottom: 1px solid colors.$cinza-claro;
+      transition: background-color properties.$tempo-transacao ease-out;
+
+      &:hover {
+        background: colors.$cinza-claro;
+      }
+    }
+  }
+}
+
+.sub-titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#validacao-erro {
+  visibility: hidden;
+  position: absolute;
+  transform: translateY(35px);
+}
+
+#validacao-erro.visible {
+  visibility: visible;
+}
+
+span.error {
+  font-size: 0.8em;
+  margin-top: .3em;
+  color: colors.$vermelho;
+}
+
+.botao-img {
+  margin: 0 2px;
+  cursor: pointer;
+  color: var(--laranja);
+
+  img {
+    width: 15px;
+  }
+}

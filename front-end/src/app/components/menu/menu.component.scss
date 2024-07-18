@@ -1,0 +1,30 @@
+@use '../../base/colors';
+@use '../../base/properties';
+
+.separador {
+  box-shadow: 0px 2px 5px colors.$cinza-claro;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  background: colors.$azul-claro;
+  width: 100%;
+
+  .item {
+    padding: 1.7rem 1rem;
+    transition: background-color properties.$tempo-transacao ease-out;
+
+    &:hover {
+      background: colors.$cinza;
+    }
+
+    .link {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 500;
+      text-decoration: none;
+      color: colors.$branco;
+    }
+  }
+}

@@ -9,7 +9,7 @@ public class UsuarioService(IUsuarioRepository _usuarioRepository) : IUsuarioSer
     public async Task<IdentityResult> CadastrarAsync(Usuario usuario, string senha)
     {
         usuario.RegistrationDate = DateTime.UtcNow;
-        return await _usuarioRepository.CreateAsync(usuario, senha);
+        return await _usuarioRepository.AddAsync(usuario, senha);
     }
 
     public async Task<Usuario?> BuscarPorIdAsync(Guid idUsuario) => await _usuarioRepository.FindByIdAsync(idUsuario);

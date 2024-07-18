@@ -11,11 +11,11 @@ public class CreateUpdateClienteDto
     public string Email { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório.")]
-    [RegularExpression(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$", ErrorMessage = "O CPF deve estar no formato 000.000.000-00.")]
+    [RegularExpression(@"^\d{11}$", ErrorMessage = "O CPF deve conter 11 números.")]
     public string CPF { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório.")]
-    [RegularExpression(@"^\(\d{2}\) \d{4,5}-\d{4}$", ErrorMessage = "O número de telefone deve estar no formato (00) 00000-0000 ou (00) 0000-0000.")]
+    [RegularExpression(@"^\d{10,11}$", ErrorMessage = "O telefone deve conter 10 ou 11 dígitos.")]
     public string Telefone { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório.")]
