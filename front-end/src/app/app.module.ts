@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { CadastroClienteComponent } from './components/clientes/cadastro-cliente/cadastro-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -15,6 +15,9 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { LoginComponent } from './components/login/login.component';
+import { RouterModule } from '@angular/router';
+import { authInterceptor } from './interceptor/auth.interceptor';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -26,7 +29,8 @@ registerLocaleData(localePt, 'pt-BR');
     CadastroClienteComponent,
     ProdutosComponent,
     CadastroProdutoComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +39,14 @@ registerLocaleData(localePt, 'pt-BR');
     FormsModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    BaseChartDirective
+    BaseChartDirective,
+    RouterModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     provideNgxMask(),
-    provideCharts(withDefaultRegisterables())
+    provideCharts(withDefaultRegisterables()),
+    provideHttpClient(withInterceptors([authInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

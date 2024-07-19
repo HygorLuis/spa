@@ -1,0 +1,43 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto) 1fr;
+    grid-template-areas:
+      "login"
+      "barra"
+      "form";
+    padding: 2rem 1rem;
+    width: 40%;
+    height: 50%;
+
+    h2 {
+      grid-area: login;
+      justify-self: center;
+      font-weight: 700;
+    }
+
+    hr {
+      grid-area: barra;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      grid-area: form;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding: 0 5rem;
+
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<section class="container">
+  <div class="card">
+    <h2 class="sub-titulo">Login</h2>
+    <hr />
+    <form (ngSubmit)="onLogin()">
+      <div>
+        <label for="usuario">Usuário</label>
+        <input id="usuario" name="usuario" type="text" [(ngModel)]="login.usuario"/>
+      </div>
+
+      <div>
+        <label for="senha">Senha</label>
+        <input id="senha" name="senha" type="password" [(ngModel)]="login.senha"/>
+      </div>
+
+      <button type="submit" class="botao">Entrar</button>
+      @if (erro) {
+        <div class="error">{{ erro }}</div>
+      }
+    </form>
+  </div>
+</section>
+
