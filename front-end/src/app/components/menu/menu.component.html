@@ -1,13 +1,13 @@
-<nav class="separador">
-  <ul class="menu">
-    <li class="item" [ngClass]="{'selecionado': activeTab === ''}">
-      <a class="link">Dashboard</a>
+<nav>
+  <ul>
+    <li routerLink="/dashboard" routerLinkActive="active">
+      <span>Dashboard</span>
     </li>
-    <li class="item" [ngClass]="{'selecionado': activeTab === 'clientes'}">
-      <a routerLink="/clientes" class="link">Clientes</a>
+    <li routerLink="/clientes" routerLinkActive="active">
+      <span>Clientes</span>
     </li>
-    <li class="item" [ngClass]="{'selecionado': activeTab === 'produtos'}">
-      <a routerLink="/produtos" class="link">Produtos</a>
+    <li routerLink="/produtos" routerLinkActive="active">
+      <span>Produtos</span>
     </li>
   </ul>
 </nav>

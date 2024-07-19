@@ -1,34 +1,28 @@
 @use '../../base/colors';
 @use '../../base/properties';
 
-.separador {
+nav {
   box-shadow: 0px 2px 5px colors.$cinza-claro;
 }
 
-.menu {
+ul {
   display: flex;
   align-items: center;
   background: colors.$azul-claro;
   width: 100%;
 
-  .selecionado{
-    background: colors.$cinza;
-  }
-
-  .item {
+  li {
     padding: 1.7rem 1rem;
     transition: background-color properties.$tempo-transacao ease-out;
 
-    &:hover {
+    &:hover, &.active {
+      cursor: pointer;
       background: colors.$cinza;
     }
 
-    .link {
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: 500;
-      text-decoration: none;
+    span {
       color: colors.$branco;
+      font-weight: 500;
     }
   }
 }

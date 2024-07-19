@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  grid-template-columns: .5fr repeat(2, auto);
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "maiorEstoque semEstoque semEstoque"
+    "maiorEstoque totalProdutos totalClientes";
+  gap: 1rem;
+
+  #maiorEstoque {
+    grid-area: maiorEstoque;
+    align-self: stretch;
+  }
+
+  #semEstoque {
+    grid-area: semEstoque;
+
+  }
+
+  #totalProdutos {
+    grid-area: totalProdutos;
+  }
+
+  #totalClientes {
+    grid-area: totalClientes;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .7rem;
+
+    h2 {
+      font-weight: 700;
+    }
+
+    span {
+      font-size: 1rem;
+      font-weight: 900;
+    }
+  }
+}

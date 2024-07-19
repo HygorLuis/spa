@@ -13,6 +13,8 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
 import { CadastroProdutoComponent } from './components/produtos/cadastro-produto/cadastro-produto.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -23,7 +25,8 @@ registerLocaleData(localePt, 'pt-BR');
     ClientesComponent,
     CadastroClienteComponent,
     ProdutosComponent,
-    CadastroProdutoComponent
+    CadastroProdutoComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +34,13 @@ registerLocaleData(localePt, 'pt-BR');
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    BaseChartDirective
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
-    provideNgxMask()
+    provideNgxMask(),
+    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [AppComponent]
 })
