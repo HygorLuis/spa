@@ -14,13 +14,18 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(authReq).pipe(
     catchError((err: any) => {
       if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          console.error('Unauthorized request:', err);
-          loginService.logout();
-        } else {
-          console.error('HTTP error:', err);
+        switch(err.status) {
+          case 401:
+            loginService.logout();
+            console.error('Unauthorized request:', err);
+            break;
+          default:
+            loginService.logout();
+            console.error('HTTP error:', err);
+            break;
         }
       } else {
+        loginService.logout();
         console.error('An error occurred:', err);
       }
 

@@ -1,4 +1,10 @@
+interface Env {
+  apiUrl: string;
+}
+
+const _window = window as any;
+
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5156/api/'
+  apiUrl: _window.env.apiUrl
 };

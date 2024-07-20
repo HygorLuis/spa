@@ -35,9 +35,7 @@ builder.Services.AddMvc(opts =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<PostgresDbContext>(opts => opts //.UseLazyLoadingProxies()
-                                                             .UseNpgsql("Server=localhost;Port=5432;Database=SPA;Username=postgres;Password=postgres")
-                                                             //.UseNpgsql(EnvironmentVars.ConnectionString)
+builder.Services.AddDbContext<PostgresDbContext>(opts => opts.UseNpgsql(EnvironmentVars.ConnectionString)
                                                              .EnableSensitiveDataLogging()
                                                              .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddSerilog(); }))
                                                 );
@@ -107,6 +105,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<PostgresDbContext>();
+    dbContext.Database.Migrate();
 }
 
 app.UseCors(corsPolicyName);

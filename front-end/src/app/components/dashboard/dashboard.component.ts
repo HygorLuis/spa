@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     ]
   };
 
-  polarAreaChartProdutosSemEstoque: ChartData<'bar'> = {
+  barChartProdutosSemEstoque: ChartData<'bar'> = {
     labels: [],
     datasets: [
       {
@@ -56,12 +56,17 @@ export class DashboardComponent implements OnInit {
     ]
   };
 
+  barChartOptions: ChartOptions<'bar'> = {
+    indexAxis: 'y',
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
+  };
+
   qtdProdutos: number = 0;
   qtdClientes: number = 0;
-
-  barChartOptions: ChartOptions<'bar'> = {
-    indexAxis: 'y'
-  };
 
   constructor(private produtoService: ProdutoService, private clienteService: ClienteService) { }
 
@@ -97,7 +102,7 @@ export class DashboardComponent implements OnInit {
   buscarProdutosSemEstoque(produtos: Produto[]): void {
     let produtosSemEstoque = produtos.filter(p => p.quantidadeEstoque <= 0);
 
-    this.polarAreaChartProdutosSemEstoque = {
+    this.barChartProdutosSemEstoque = {
       labels: produtosSemEstoque.map(x => x.nome),
       datasets: [
         {
@@ -108,25 +113,5 @@ export class DashboardComponent implements OnInit {
         }
       ]
     };
-  }
-
-  buscarQtdProdutos(): void {
-    this.produtoService.buscar().subscribe((produtos) => {
-      let produtosSemEstoque = produtos.filter(p => p.quantidadeEstoque <= 0);
-
-      console.log(`produtosSemEstoque: ${JSON.stringify(produtosSemEstoque)}`);
-
-      this.polarAreaChartProdutosSemEstoque = {
-        labels: produtosSemEstoque.map(x => x.nome),
-        datasets: [
-          {
-            label: '',
-            data: produtosSemEstoque.map(x => x.quantidadeEstoque),
-            backgroundColor: this.colorsSolid,
-            minBarLength: 2
-          }
-        ]
-      };
-    });
   }
 }

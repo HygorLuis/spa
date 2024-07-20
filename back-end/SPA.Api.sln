@@ -15,21 +15,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{3D5AE2F0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{7987FCDA-90F0-4624-837C-EEABB7A3E8AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA.Api", "src\API\SPA.Api\SPA.Api.csproj", "{2DC30FE5-D741-4B1B-B6F2-52E70C0974CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPA.Api", "src\API\SPA.Api\SPA.Api.csproj", "{2DC30FE5-D741-4B1B-B6F2-52E70C0974CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA.Domain", "src\Domain\SPA.Domain\SPA.Domain.csproj", "{59E80DEE-F821-4B32-BF28-64C68970391C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPA.Domain", "src\Domain\SPA.Domain\SPA.Domain.csproj", "{59E80DEE-F821-4B32-BF28-64C68970391C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{80DF8002-7294-4C8A-A08C-B93C6AA5B0C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F7E004B9-BED1-4BA5-A1D0-D8B90A6FF7A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA.Data", "src\Infra\Data\SPA.Data\SPA.Data.csproj", "{4B7D7681-8EF4-45D0-A07C-03DE48BE3C86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPA.Data", "src\Infra\Data\SPA.Data\SPA.Data.csproj", "{4B7D7681-8EF4-45D0-A07C-03DE48BE3C86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA.CrossCutting", "src\Infra\CrossCutting\SPA.CrossCutting\SPA.CrossCutting.csproj", "{D8775839-5870-4F11-AF74-D08A754BEDDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPA.CrossCutting", "src\Infra\CrossCutting\SPA.CrossCutting\SPA.CrossCutting.csproj", "{D8775839-5870-4F11-AF74-D08A754BEDDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA.Application", "src\Application\SPA.Application\SPA.Application.csproj", "{24E632E7-3F21-4F10-9B15-DAF05B663797}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPA.Application", "src\Application\SPA.Application\SPA.Application.csproj", "{24E632E7-3F21-4F10-9B15-DAF05B663797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA.Test", "test\SPA.Test\SPA.Test.csproj", "{67C2F28F-582E-4DB5-A656-73BC81BF9908}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPA.Test", "test\SPA.Test\SPA.Test.csproj", "{67C2F28F-582E-4DB5-A656-73BC81BF9908}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A5B398-569E-40D1-8F4E-4828D33C02A3}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
