@@ -9,6 +9,9 @@ namespace SPA.Api.Controllers;
 [ApiController]
 [Authorize]
 
+[ProducesResponseType<string>(StatusCodes.Status401Unauthorized)]
+[ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
+[ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
 public class UsuarioController(IUsuarioAppService _usuarioAppService) : ControllerBase
 {
     [HttpPost]
@@ -23,6 +26,8 @@ public class UsuarioController(IUsuarioAppService _usuarioAppService) : Controll
     }
 
     [HttpGet("{idUsuario}")]
+    [ProducesResponseType<ReadUsuarioDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> BuscarPorIdAsync(string idUsuario)
     {
         if (string.IsNullOrWhiteSpace(idUsuario) || !Guid.TryParse(idUsuario, out var idGuid) || idGuid == Guid.Empty)

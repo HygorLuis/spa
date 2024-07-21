@@ -20,7 +20,7 @@ services:
     networks:
       - spa
     environment:
-      CONNECTIONSTRING: Server=postgresql;Port=5432;Database=SPA2;Username=postgres;Password=postgres
+      CONNECTIONSTRING: Server=postgresql;Port=5432;Database=SPA;Username=postgres;Password=postgres
       JWT-SECRET: fedaf7d8863b48e197b9287d492b708e
       JWT-ISSUER: http://localhost:5000
       JWT-AUDIENCE: LOCALHOST

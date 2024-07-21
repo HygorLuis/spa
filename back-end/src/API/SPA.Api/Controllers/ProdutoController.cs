@@ -9,9 +9,13 @@ namespace SPA.Api.Controllers;
 [ApiController]
 [Authorize]
 
+[ProducesResponseType<string>(StatusCodes.Status401Unauthorized)]
+[ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
+[ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
 public class ProdutoController(IProdutoAppService _produtoAppService) : ControllerBase
 {
     [HttpGet]
+    [ProducesResponseType<IEnumerable<ReadProdutoDto>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> BuscarProdutosAsync()
     {
         var result = await _produtoAppService.BuscarProdutosAsync();
@@ -22,6 +26,8 @@ public class ProdutoController(IProdutoAppService _produtoAppService) : Controll
     }
 
     [HttpGet("{idProduto}")]
+    [ProducesResponseType<ReadProdutoDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> BuscarPorIdAsync(string idProduto)
     {
         if (string.IsNullOrWhiteSpace(idProduto) || !Guid.TryParse(idProduto, out var idGuid) || idGuid == Guid.Empty)
@@ -46,6 +52,8 @@ public class ProdutoController(IProdutoAppService _produtoAppService) : Controll
     }
 
     [HttpPut("{idProduto}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> AtualizarAsync(string idProduto, [FromBody] CreateUpdateProdutoDto updateProdutoDto)
     {
         if (string.IsNullOrWhiteSpace(idProduto) || !Guid.TryParse(idProduto, out var idGuid) || idGuid == Guid.Empty)
@@ -59,6 +67,8 @@ public class ProdutoController(IProdutoAppService _produtoAppService) : Controll
     }
 
     [HttpDelete("{idProduto}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ExcluirAsync(string idProduto)
     {
         if (string.IsNullOrWhiteSpace(idProduto) || !Guid.TryParse(idProduto, out var idGuid) || idGuid == Guid.Empty)

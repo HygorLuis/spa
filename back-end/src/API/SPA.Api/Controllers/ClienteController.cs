@@ -9,9 +9,13 @@ namespace SPA.Api.Controllers;
 [ApiController]
 [Authorize]
 
+[ProducesResponseType<string>(StatusCodes.Status401Unauthorized)]
+[ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
+[ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
 public class ClienteController(IClienteAppService _clienteAppService) : ControllerBase
 {
     [HttpGet]
+    [ProducesResponseType<IEnumerable<ReadClienteDto>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> BuscarClientesAsync()
     {
         var result = await _clienteAppService.BuscarClientesAsync();
@@ -22,6 +26,8 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     }
 
     [HttpGet("{idCliente}")]
+    [ProducesResponseType<ReadClienteDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> BuscarPorIdAsync(string idCliente)
     {
         if (string.IsNullOrWhiteSpace(idCliente) || !Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
@@ -35,7 +41,7 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType<ReadClienteDto>(StatusCodes.Status201Created)]
     public async Task<IActionResult> CadastrarAsync([FromBody] CreateUpdateClienteDto createClienteDto)
     {
         var result = await _clienteAppService.CadastrarAsync(createClienteDto);
@@ -46,6 +52,8 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     }
 
     [HttpPut("{idCliente}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> AtualizarAsync(string idCliente, [FromBody] CreateUpdateClienteDto updateClienteDto)
     {
         if (string.IsNullOrWhiteSpace(idCliente) || !Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
@@ -59,6 +67,8 @@ public class ClienteController(IClienteAppService _clienteAppService) : Controll
     }
 
     [HttpDelete("{idCliente}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ExcluirAsync(string idCliente)
     {
         if (string.IsNullOrWhiteSpace(idCliente) || !Guid.TryParse(idCliente, out var idGuid) || idGuid == Guid.Empty)
