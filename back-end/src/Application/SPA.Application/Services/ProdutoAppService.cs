@@ -84,11 +84,11 @@ public class ProdutoAppService(IMapper _mapper, IProdutoService _produtoService)
     {
         try
         {
-            var cliente = await _produtoService.BuscarPorIdAsync(idProduto);
-            if (cliente == null)
+            var produto = await _produtoService.BuscarPorIdAsync(idProduto);
+            if (produto == null)
                 return ServiceResult<ReadProdutoDto>.Failure("Produto não encontrado!");
 
-            await _produtoService.ExcluirAsync(cliente);
+            await _produtoService.ExcluirAsync(produto);
             return ServiceResult<ReadProdutoDto>.Success();
         }
         catch (Exception ex)

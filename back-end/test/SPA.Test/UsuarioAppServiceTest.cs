@@ -16,8 +16,8 @@ public class UsuarioAppServiceTest
 
     public UsuarioAppServiceTest()
     {
-        _usuarioServiceMock = new Mock<IUsuarioService>();
         _mapperMock = new Mock<IMapper>();
+        _usuarioServiceMock = new Mock<IUsuarioService>();
 
         _usuarioAppService = new UsuarioAppService(_mapperMock.Object, _usuarioServiceMock.Object);
     }
