@@ -9,7 +9,6 @@ ul {
   display: flex;
   align-items: center;
   background: colors.$azul-claro;
-  width: 100%;
 
   li {
     padding: 1.7rem 1rem;
@@ -23,6 +22,10 @@ ul {
     span {
       color: colors.$branco;
       font-weight: 500;
+    }
+
+    &:last-child {
+      margin-left: auto;
     }
   }
 }

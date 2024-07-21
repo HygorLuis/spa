@@ -107,8 +107,9 @@ hr {
 }
 
 .table-wrapper {
+  height: calc(100vh - 14rem);
+  max-width: 100%;
   overflow-y: auto;
-  height: 50vh;
   margin: 1rem;
   border: 1px solid colors.$cinza;
 
@@ -185,4 +186,22 @@ span.error {
 .form-group {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .botao {
+    padding: .7rem 2rem;
+    cursor: pointer;
+    border: 0px;
+  }
+
+  .botao-grande {
+    font-size: 1rem;
+    font-weight: 500;
+    width: 60%;
+  }
 }

@@ -37,3 +37,35 @@
     grid-area: botoes;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
+
+  .grid-form-cliente {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, auto);
+    grid-template-areas:
+      "nome"
+      "cpf"
+      "telefone"
+      "email"
+      "endereco"
+      "observacao"
+      "botoes";
+    gap: 2rem;
+
+    .botoes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .botao-grande {
+    width: 100%;
+  }
+}

@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [loginGuard] },
   { path: 'clientes', component: ClientesComponent, canActivate: [loginGuard] },
   { path: 'produtos', component: ProdutosComponent, canActivate: [loginGuard] },
-  { path: 'produtos', component: ProdutosComponent, canActivate: [loginGuard] },
   { path: '**', redirectTo: 'login' }
 ];
 
