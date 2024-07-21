@@ -16,8 +16,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       if (err instanceof HttpErrorResponse) {
         switch(err.status) {
           case 401:
-            loginService.logout();
             console.error('Unauthorized request:', err);
+            loginService.logout();
             break;
           default:
             console.error('HTTP error:', err);

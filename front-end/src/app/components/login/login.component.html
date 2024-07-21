@@ -14,9 +14,9 @@
       </div>
 
       <button type="submit" class="botao">Entrar</button>
-      @if (erro) {
-        <div class="error">{{ erro }}</div>
-      }
+      <div id="erro">
+        <span class="error">{{ erro ? erro : '' }}</span>
+      </div>
     </form>
   </div>
 </section>

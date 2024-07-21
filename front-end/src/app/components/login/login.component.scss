@@ -17,7 +17,7 @@ section {
       "login"
       "barra"
       "form";
-    padding: 2rem 1rem;
+    padding: 2rem 2rem 0rem 1rem;
     width: 30%;
     height: 50%;
     border-color: colors.$branco;
@@ -50,7 +50,15 @@ section {
         input {
           height: 2rem;
           font-size: 1rem;
-          background: colors.$branco;
+        }
+      }
+
+      #erro {
+        display: flex;
+        align-items: center;
+
+        .error {
+          height: 1rem;
         }
       }
     }

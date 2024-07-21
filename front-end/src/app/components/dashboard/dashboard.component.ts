@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
     this.produtoService.buscar().subscribe((produtos) => {
       this.produtosComMaiorEstoque(produtos);
       this.buscarProdutosSemEstoque(produtos);
-      this.qtdProdutos = produtos.filter(p => p.quantidadeEstoque > 0).length;
+      this.qtdProdutos = produtos.length;
     });
 
     this.clienteService.buscar().subscribe((clientes) => {
