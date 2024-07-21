@@ -12,7 +12,7 @@
 
     <div id="estoque-grupo" class="form-group">
       <label for="estoque">Estoque</label>
-      <input id="estoque" type="text" formControlName="quantidadeEstoque" mask="separator.0"/>
+      <input id="estoque" type="text" formControlName="quantidadeEstoque" [allowNegativeNumbers]="true" mask="separator.0"/>
       <div id="validacao-erro" [ngClass]="{'visible': submitted && produtoForm.controls.quantidadeEstoque.invalid || (produtoForm.get('quantidadeEstoque')?.hasError('required') && produtoForm.get('quantidadeEstoque')?.touched)}">
         <p><span class="error">Campo obrigatório.</span></p>
       </div>

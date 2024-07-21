@@ -15,4 +15,6 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
+EXPOSE 5000
+
 ENTRYPOINT ["dotnet", "SPA.Api.dll"]

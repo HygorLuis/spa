@@ -8,7 +8,6 @@ public class CreateUpdateProdutoDto
     public string Nome { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório.")]
-    [Range(0, int.MaxValue, ErrorMessage = "A quantidade em estoque não pode ser menor que zero.")]
     public int QuantidadeEstoque { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório.")]

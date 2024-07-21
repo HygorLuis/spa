@@ -20,12 +20,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
             console.error('Unauthorized request:', err);
             break;
           default:
-            loginService.logout();
             console.error('HTTP error:', err);
             break;
         }
       } else {
-        loginService.logout();
         console.error('An error occurred:', err);
       }
 
