@@ -18,7 +18,7 @@ input {
   border-right: none;
   border-left: none;
   outline: none;
-  input:-webkit-autofill:active {
+  -webkit-autofill:active {
     -webkit-text-fill-color: colors.$branco !important;
   }
 }
