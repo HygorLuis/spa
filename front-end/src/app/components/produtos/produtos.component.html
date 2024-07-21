@@ -10,6 +10,7 @@
             <th><span>Estoque</span></th>
             <th><span>Custo</span></th>
             <th><span>Venda</span></th>
+            <th><span>Cadastro</span></th>
             <th><span>Observação</span></th>
             <th></th>
           </tr>
@@ -21,6 +22,7 @@
               <td>{{produto.quantidadeEstoque}}</td>
               <td>{{produto.valorCusto | currency:'R$':'symbol':'1.2-2':'pt-BR'}}</td>
               <td>{{produto.valorVenda | currency:'R$':'symbol':'1.2-2':'pt-BR'}}</td>
+              <td>{{produto.dataCadastro | date:'dd/MM/yyyy'}}</td>
               <td>{{produto.observacao}}</td>
               <td>
                 <button title="Editar Produto" class="botao-img" (click)="abrirCardProduto(true, produto.id)">
