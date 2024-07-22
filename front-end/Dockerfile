@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build --prod
 
 #stage 2
-FROM nginx:alpine
+FROM nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/spa/browser /usr/share/nginx/html
 COPY src/assets/env.template.js /usr/share/nginx/html/assets/env.template.js
