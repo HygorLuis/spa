@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ DOTNET_VERSION }}
+        dotnet-version: ${{ vars.DOTNET_VERSION }}
         
     - name: Restore dependencies
       run: dotnet restore back-end/src/API/SPA.Api/SPA.Api.csproj
@@ -48,7 +48,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ NODE_VERSION }}
+        node-version: ${{ vars.NODE_VERSION }}
       
     - name: Install Angular dependencies
       working-directory: front-end
