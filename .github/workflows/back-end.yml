@@ -54,6 +54,5 @@ jobs:
       with:
         username: hygorluis
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        secrets: inherit
 
           
