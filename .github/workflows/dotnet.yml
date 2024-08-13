@@ -36,4 +36,4 @@ jobs:
     - uses: actions/checkout@v4
       
     - name: Test
-      run: dotnet test back-end/test/SPA.Test/SPA.Test.csproj --verbosity normal --logger "console;verbosity=detailed"
+      run: dotnet test back-end/test/SPA.Test/SPA.Test.csproj --logger "console;verbosity=detailed"
