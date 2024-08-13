@@ -22,10 +22,10 @@ jobs:
         dotnet-version: 8.0.x
         
     - name: Restore dependencies
-      run: dotnet restore src/API/SPA.Api/SPA.Api.csproj
+      run: dotnet restore back-end/src/API/SPA.Api/SPA.Api.csproj
       
     - name: Build
-      run: dotnet build --no-restore src/API/SPA.Api
+      run: dotnet build back-end/src/API/SPA.Api/SPA.Api.csproj --no-restore
 
 
   test:
