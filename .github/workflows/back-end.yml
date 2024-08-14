@@ -12,6 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ vars.DOTNET_VERSION }}
         
     - name: Restore dependencies
       run: dotnet restore back-end/src/API/SPA.Api/SPA.Api.csproj
