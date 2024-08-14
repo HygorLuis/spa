@@ -52,7 +52,7 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v3.3.0
       with:
-        username: ${{ vars.DOCKERHUB_USERNAME }}
-        password: ${{ vars.DOCKERHUB_PASSWORD }}
+        username: hygorluis
+        password: 3ky09p000
 
           
