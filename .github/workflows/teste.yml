@@ -9,3 +9,4 @@ jobs:
         run: |
           echo "USERNAME: ${{ vars.DOCKERHUB_USERNAME }}"
           echo "PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}"
+          echo "VERSION: ${{ vars.DOTNET_VERSION }}"
