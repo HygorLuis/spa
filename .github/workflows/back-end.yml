@@ -55,4 +55,13 @@ jobs:
         username: hygorluis
         password: 3ky09p000
 
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v6.7.0
+      with:
+        context: ./back-end
+        file: ./Dockerfile
+        push: true
+        tags: hygorluis/back-end:${{ github.ref_name }}
+          
+
           
