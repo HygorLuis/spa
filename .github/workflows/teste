@@ -1,0 +1,11 @@
+name: Test Secrets
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo secrets
+        run: |
+          echo "USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}"
+          echo "PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}"
