@@ -5,17 +5,12 @@ on: [push]
 jobs:
   test-env:
     runs-on: ubuntu-latest
+    environment: CI
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set environment variables
+      - name: Print environment variable
         run: |
-          echo "MY_VAR1=Hello World" >> $GITHUB_ENV
-          echo "MY_VAR2=12345" >> $GITHUB_ENV
-
-      - name: Print environment variables
-        run: |
-          echo "MY_VAR1: $MY_VAR1"
-          echo "MY_VAR2: $MY_VAR2"
+          echo "DOTNET_VERSION: ${{ vars.DOTNET_VERSION }}"
