@@ -42,6 +42,7 @@ builder.Services.AddDbContext<PostgresDbContext>(opts => opts.UseNpgsql(Environm
                                                              .EnableSensitiveDataLogging()
                                                              .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddSerilog(); }))
                                                 );
+builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<PostgresDbContext>());
 
 builder.Services.AddIdentity<Usuario, IdentityRole<Guid>>(opts =>
 {

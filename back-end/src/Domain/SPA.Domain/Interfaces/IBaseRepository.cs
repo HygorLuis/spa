@@ -1,11 +1,11 @@
 ﻿namespace SPA.Domain.Interfaces;
 
-public interface IBaseRepository<T> where T : class
+public interface IBaseRepository<TEntity> where TEntity : class
 {
-    Task<IEnumerable<T>> GetAllAsync();
-    Task<T?> FindByIdAsync(Guid id);
-    Task AddAsync(T entity, string? value = null);
-    void Update(T entity);
-    void Delete(T entity);
+    Task<IEnumerable<TEntity>> GetAllAsync();
+    Task<TEntity?> FindByIdAsync(Guid id);
+    Task AddAsync(TEntity entity, string? value = null);
+    void Update(TEntity entity);
+    void Delete(TEntity entity);
     Task SaveChangesAsync();
 }

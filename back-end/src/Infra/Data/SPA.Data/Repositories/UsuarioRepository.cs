@@ -5,7 +5,7 @@ using SPA.Domain.Interfaces;
 
 namespace SPA.Data.Repositories;
 
-public class UsuarioRepository(PostgresDbContext _postgresDbContext, UserManager<Usuario> _userManager) : BaseRepository<Usuario>(_postgresDbContext), IUsuarioRepository
+public class UsuarioRepository(IApplicationDbContext _dbContext, UserManager<Usuario> _userManager) : BaseRepository<Usuario>(_dbContext), IUsuarioRepository
 {
     public override async Task<IdentityResult> AddAsync(Usuario usuario, string senha) => await _userManager.CreateAsync(usuario, senha);
 

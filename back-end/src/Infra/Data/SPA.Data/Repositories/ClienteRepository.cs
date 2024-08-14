@@ -4,7 +4,7 @@ using SPA.Domain.Interfaces;
 
 namespace SPA.Data.Repositories;
 
-public class ClienteRepository(PostgresDbContext _postgresDbContext) : BaseRepository<Cliente>(_postgresDbContext), IClienteRepository
+public class ClienteRepository(IApplicationDbContext _dbContext) : BaseRepository<Cliente>(_dbContext), IClienteRepository
 { 
-    public Cliente? BuscarPorCPF(string cpf) => _postgresDbContext.Clientes.FirstOrDefault(c => c.CPF == cpf);
+    public Cliente? BuscarPorCPF(string cpf) => _dbContext.Clientes.FirstOrDefault(c => c.CPF == cpf);
 }

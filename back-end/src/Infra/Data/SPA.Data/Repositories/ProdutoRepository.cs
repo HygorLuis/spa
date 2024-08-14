@@ -4,7 +4,7 @@ using SPA.Domain.Interfaces;
 
 namespace SPA.Data.Repositories;
 
-public class ProdutoRepository(PostgresDbContext _postgresDbContext) : BaseRepository<Produto>(_postgresDbContext), IProdutoRepository
+public class ProdutoRepository(IApplicationDbContext _dbContext) : BaseRepository<Produto>(_dbContext), IProdutoRepository
 {
-    public Produto? BuscarPorNome(string nome) => _postgresDbContext.Produtos.FirstOrDefault(p => p.Nome == nome);
+    public Produto? BuscarPorNome(string nome) => _dbContext.Produtos.FirstOrDefault(p => p.Nome == nome);
 }

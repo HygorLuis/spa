@@ -5,9 +5,11 @@ using SPA.Domain.Entities;
 
 namespace SPA.Data.Context;
 
-public class PostgresDbContext(DbContextOptions options) : IdentityDbContext<Usuario, IdentityRole<Guid>, Guid>(options)
+public class PostgresDbContext(DbContextOptions options) : IdentityDbContext<Usuario, IdentityRole<Guid>, Guid>(options), IApplicationDbContext
 {
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Cliente> Clientes { get; set; }
     public DbSet<Produto> Produtos { get; set; }
+
+    public Task SaveChangesAsync() => base.SaveChangesAsync();
 }
