@@ -14,3 +14,7 @@ jobs:
   front-end:
     uses: ./.github/workflows/front-end.yml
     secrets: inherit
+
+  deploy_EC2:
+    uses: ./.github/workflows/EC2.yml
+    secrets: inherit
