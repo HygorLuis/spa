@@ -1,0 +1,13 @@
+name: Entrega continua
+
+on:
+  workflow_call:
+
+jobs:
+
+  EC2:
+    runs-on: ubuntu-latest
+    environment: CI
+
+    steps:
+    - uses: actions/checkout@v4
