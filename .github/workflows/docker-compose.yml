@@ -1,0 +1,48 @@
+services:
+  postgresql:
+    image: postgis/postgis
+    container_name: postgresql
+    ports:
+      - 5432:5432
+    networks:
+      - spa
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+
+  backend:
+    image: hygorluis/back-end
+    container_name: back-end
+    ports:
+      - 5000:5000
+    networks:
+      - spa
+    environment:
+      CONNECTIONSTRING: Server=postgresql;Port=5432;Database=SPA;Username=postgres;Password=postgres
+      JWT-SECRET: fedaf7d8863b48e197b9287d492b708e
+      JWT-ISSUER: http://localhost:5000
+      JWT-AUDIENCE: LOCALHOST
+    depends_on:
+      - postgresql
+
+  frontend:
+    image: hygorluis/front-end
+    container_name: front-end
+    ports:
+      - 4200:80
+    networks:
+      - spa
+    environment:
+      API_URL: http://localhost:5000/api/
+    depends_on:
+      - backend
+
+networks:
+  spa:
+    name: spa
+
+volumes:
+  postgresql:
+    name: postgresql
