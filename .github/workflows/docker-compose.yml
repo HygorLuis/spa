@@ -22,8 +22,8 @@ services:
     environment:
       CONNECTIONSTRING: Server=postgresql;Port=5432;Database=SPA;Username=postgres;Password=postgres
       JWT-SECRET: fedaf7d8863b48e197b9287d492b708e
-      JWT-ISSUER: http://localhost:5000
-      JWT-AUDIENCE: LOCALHOST
+      JWT-ISSUER: http://15.228.170.108:5000
+      JWT-AUDIENCE: AWS
     depends_on:
       - postgresql
 
@@ -35,7 +35,7 @@ services:
     networks:
       - spa
     environment:
-      API_URL: http://localhost:5000/api/
+      API_URL: http://15.228.170.108:5000/api/
     depends_on:
       - backend
 
