@@ -7,15 +7,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  back-end:
+  Back-end:
     uses: ./.github/workflows/back-end.yml
     secrets: inherit
 
-  front-end:
+  Front-end:
     uses: ./.github/workflows/front-end.yml
     secrets: inherit
 
-  deploy_EC2:
-    needs: [back-end, front-end]
+  EC2:
+    needs: [Back-end, Front-end]
     uses: ./.github/workflows/EC2.yml
     secrets: inherit
