@@ -31,7 +31,7 @@ services:
     image: hygorluis/front-end:main
     container_name: front-end
     ports:
-      - 4200:80
+      - 80:80
     networks:
       - spa
     environment:
