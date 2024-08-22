@@ -18,7 +18,8 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        SOURCE: /home/${{ secrets.REMOTE_USER }}/docker-compose.yml
+        TARGET: /home/${{ secrets.REMOTE_USER }}
+        SOURCE: docker-compose.yml
 
     - name: Executing remote ssh commands
       uses: appleboy/ssh-action@v1.0.3
@@ -28,8 +29,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
-          cd /home/${{ secrets.REMOTE_USER }}
+          sudo mv /home/${{ secrets.REMOTE_USER }}/docker-compose.yml /root/
           sudo systemctl start docker
-          docker-compose down
-          docker-compose pull
-          docker-compose up -d
+          sudo docker-compose down
+          sudo docker-compose pull
+          sudo docker-compose up -d
