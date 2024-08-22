@@ -31,7 +31,6 @@ jobs:
         script: |    
           sudo mv /home/${{ secrets.REMOTE_USER }}/docker-compose.yml /root/
           sudo -i
-          systemctl start docker
           docker compose down
           docker compose pull
           docker compose up -d
