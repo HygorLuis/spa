@@ -13,7 +13,7 @@ services:
       - postgresql:/var/lib/postgresql/data
 
   backend:
-    image: hygorluis/back-end
+    image: hygorluis/back-end:main
     container_name: back-end
     ports:
       - 5000:5000
@@ -28,7 +28,7 @@ services:
       - postgresql
 
   frontend:
-    image: hygorluis/front-end
+    image: hygorluis/front-end:main
     container_name: front-end
     ports:
       - 4200:80
