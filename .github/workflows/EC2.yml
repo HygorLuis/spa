@@ -28,9 +28,9 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
-        script: |
+        script: |    
+          sudo mv /home/${{ secrets.REMOTE_USER }}/docker-compose.yml /root/
           sudo -i
-          mv /home/${{ secrets.REMOTE_USER }}/docker-compose.yml /root/
           systemctl start docker
           docker compose down
           docker compose pull
